@@ -204,7 +204,9 @@ module Calabash
                     if connected
                       server_version = get_version
                       if server_version
-                        p server_version
+                        if FULL_CONSOLE_OUTPUT
+                          p server_version
+                        end
                         unless version_check(server_version)
                           msgs = ["You're running an older version of Calabash server with a newer client",
                                   "Client:#{Calabash::Cucumber::VERSION}",
@@ -270,7 +272,9 @@ module Calabash
         endpoint += "/" unless endpoint.end_with? "/"
         url = URI.parse("#{endpoint}version")
 
-        puts "Fetch version #{url}..."
+        if FULL_CONSOLE_OUTPUT
+          puts "Fetch version #{url}..."
+        end
         begin
           body = Net::HTTP.get_response(url).body
           res = JSON.parse(body)
