@@ -60,7 +60,7 @@ For automatic setup:
 1. In a terminal, go to your iOS project
   - `cd path-to-my-ios-project` (i.e. directory containing .xcodeproj file)
 
-2. Install calabash-cucumber gem. **For the squareware fork the gem is installed different to the standard githib project.**
+2. Install calabash-cucumber gem. **For the squareware fork the gem is installed different to the standard [github](https://github.com/squareware/calabash-ios) project.**
   - `git checkout -b 0.9x origin/0.9x` (the 0.9.x branch is necessary to build the gem)
   - `gem build calabash-cucumber/calabash-cucumber.gemspec` (build the gem)
   - `gem install calabash-cucumber/calabash-cucumber-0.9.138.gem` (install the gem)
