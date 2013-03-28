@@ -79,7 +79,7 @@ For automatic setup:
 
 6. Setup the verbosity of the cucumber output with the `CALABASH_FULL_CONSOLE_OUTPUT` environment variable
   - Use `export CALABASH_FULL_CONSOLE_OUTPUT=false` for the output to be more akin to the web-testing cucumber output. Here information about connecting to the simulator, calabash version number, app build directory, etc will not be printed to the console.
-  - Use `export CALABASH_FULL_CONSOLE_OUTPUT=true` for all output to be printed; i.e. same as the [original project](https://github.com/squareware/calabash-ios).
+  - Use `export CALABASH_FULL_CONSOLE_OUTPUT=true` for all output to be printed; i.e. same as the [original project](https://github.com/calabash/calabash-ios).
   - If `CALABASH_FULL_CONSOLE_OUTPUT` is not set then the default is true.
 
 7. Run the generated test!
