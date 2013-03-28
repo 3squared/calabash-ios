@@ -57,13 +57,14 @@ If it doesn't work in your project, you should read the section "Manual setup wi
 
 For automatic setup:
 
-1. In a terminal, go to your iOS project
-  - `cd path-to-my-ios-project` (i.e. directory containing .xcodeproj file)
+1. Install calabash-cucumber gem. **For the squareware fork the gem is installed differently to the standard [github](https://github.com/squareware/calabash-ios) project.**
+  - `git checkout -b 0.9.x origin/0.9.x` (the 0.9.x branch is necessary to build the gem)
+  - `cd calabash-cucumber/`
+  - `gem build calabash-cucumber.gemspec` (build the gem)
+  - `sudo gem install calabash-cucumber-0.9.138.gem` (install the gem)
 
-2. Install calabash-cucumber gem. **For the squareware fork the gem is installed differently to the standard [github](https://github.com/squareware/calabash-ios) project.**
-  - `git checkout -b 0.9x origin/0.9x` (the 0.9.x branch is necessary to build the gem)
-  - `gem build calabash-cucumber/calabash-cucumber.gemspec` (build the gem)
-  - `gem install calabash-cucumber/calabash-cucumber-0.9.138.gem` (install the gem)
+2. Change directories to to where the iOS project is
+  - `cd path-to-my-ios-project` (i.e. directory containing .xcodeproj file)
 
 3. Setup your project for Calabash-iOS.
   - `calabash-ios setup`
@@ -108,13 +109,7 @@ by duplicating your production target in Xcode (explained below).
 
 ### Ruby and calabash-cucumber gem.
 
-*   Install the `calabash-cucumber` gem. (You may need to do `sudo gem install calabash-cucumber`)
-
-        krukow:~$ gem install calabash-cucumber
-        Successfully installed calabash-cucumber-0.9.47
-        1 gem installed
-        Installing ri documentation for calabash-cucumber-0.9.47...
-        Installing RDoc documentation for calabash-cucumber-0.9.47...
+*   Install the `calabash-cucumber` gem. Follow Step 1 in the "Fast track" instructions.
 
 
 ### Setting up Xcode project
