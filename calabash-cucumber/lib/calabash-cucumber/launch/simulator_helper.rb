@@ -19,6 +19,8 @@ module Calabash
 
       DEFAULT_SIM_RETRY = 2
 
+      FULL_CONSOLE_OUTPUT = false
+
       def self.relaunch(path, sdk = nil, version = 'iphone', args = nil)
 
         app_bundle_path = app_bundle_or_raise(path)
@@ -176,12 +178,18 @@ module Calabash
           timeout = (ENV['CONNECT_TIMEOUT'] || DEFAULT_SIM_WAIT).to_i
           retry_count = 0
           connected = false
-          puts "Waiting at most #{timeout} seconds for simulator (CONNECT_TIMEOUT)"
-          puts "Retrying at most #{max_retry_count} times (MAX_CONNECT_RETRY)"
+
+          if FULL_CONSOLE_OUTPUT
+            puts "Waiting at most #{timeout} seconds for simulator (CONNECT_TIMEOUT)"
+            puts "Retrying at most #{max_retry_count} times (MAX_CONNECT_RETRY)"
+          end
+
           until connected do
             raise "MAX_RETRIES" if retry_count == max_retry_count
             retry_count += 1
-            puts "(#{retry_count}.) Start Simulator #{sdk}, #{version}, for #{app_bundle_path}"
+            if FULL_CONSOLE_OUTPUT
+              puts "(#{retry_count}.) Start Simulator #{sdk}, #{version}, for #{app_bundle_path}"
+            end
             begin
               Timeout::timeout(timeout, TimeoutErr) do
                 simulator = launch(app_bundle_path, sdk, version, args)
@@ -241,7 +249,9 @@ module Calabash
 
       def self.ping_app
         url = URI.parse(ENV['DEVICE_ENDPOINT']|| "http://localhost:37265/")
-        puts "Ping #{url}..."
+        if FULL_CONSOLE_OUTPUT
+           puts "Ping #{url}..."   
+        end
         http = Net::HTTP.new(url.host, url.port)
         res = http.start do |sess|
           sess.request Net::HTTP::Get.new url.path
